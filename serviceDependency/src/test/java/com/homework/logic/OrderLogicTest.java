@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withStatus;
 
+import java.util.concurrent.ExecutionException;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -71,5 +73,41 @@ public class OrderLogicTest {
 		assertEquals("123",result);
 		
 	}
+	
+	@Test
+	public void testProcessOrderParallel() throws InterruptedException, ExecutionException {
+		
+		UriTemplateHandler uriTemplate = new DefaultUriTemplateHandler();
+		String urlServiceA = uriTemplate.expand(url, "a").toString();
+		String urlServiceAA = uriTemplate.expand(url, "aa").toString();
+		String urlServiceB = uriTemplate.expand(url, "b").toString();
+		String urlServiceC = uriTemplate.expand(url, "c").toString();
+
+		String resultA = "1";
+		String resultAA = "12";
+		String resultB = "3";
+		String resultC = "123";
+		
+		mockServer.expect(requestTo(urlServiceA)).
+				andRespond(withStatus(HttpStatus.OK).
+						body(resultA));
+		mockServer.expect(requestTo(urlServiceB)).
+		andRespond(withStatus(HttpStatus.OK).
+				body(resultB));
+		
+		mockServer.expect(requestTo(urlServiceAA)).
+		andRespond(withStatus(HttpStatus.OK).
+				body(resultAA));		
+		
+		mockServer.expect(requestTo(urlServiceC)).
+		andRespond(withStatus(HttpStatus.OK).
+				body(resultC));
+		
+		String result = orderLogic.processOrderParallel(null);
+		assertEquals("123",result);
+		
+	}
+	
+	
 
 }
