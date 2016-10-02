@@ -9,10 +9,10 @@ This project is a homework that try to improve the excecution time of a 4 dummie
 
 
   ####A lineal excecution must follow those order:
-  A -> AA -> B -> C
+  **A** -> **AA** -> **B** -> **C**
   or
-  A -> B -> AA -> C
-  B -> A -> AA -> C
+  **A** -> **B** -> **AA** -> **C**
+  **B** -> **A** -> **AA** -> **C**
   
   when a<sub>1</sub> -> a<sub>2</sub> -> a<sub>3</sub> -> ... -> a<sub>n</sub> is a lineal excecution of **n** services (tasks) in order from left to right.
   
@@ -23,10 +23,10 @@ This project is a homework that try to improve the excecution time of a 4 dummie
     + **AA** depends of **A** 
     + **C** depends of **AA** and **B**.
     
-  the order of parallel call in this case is:
-  ----
+  **the order of parallel call in this case is:**
+ 
   
-  + {A,B} -> {AA} -> {C}
+  + {**A**,**B**} -> {**AA**} -> {**C**}
   
   when {a<sub>1</sub>,a<sub>2</sub>,a<sub>3</sub>,...,a<sub>n</sub>} is a set  of **n** parallel services (tasks.)
   
@@ -49,7 +49,7 @@ This project is a homework that try to improve the excecution time of a 4 dummie
     **AA**| **A**| No | No
     **C**| **AA** and **B**| No | No
     
-    We excecute {A,B}
+    We excecute {**A**,**B**}
     
     Step 2:
     
@@ -60,7 +60,7 @@ This project is a homework that try to improve the excecution time of a 4 dummie
     **AA**| **A**| No | **Yes**
     **C**| **AA** and **B**| No | No
     
-    We excecute {AA}
+    We excecute {**AA**}
     
     Step 3:
     
@@ -71,7 +71,7 @@ This project is a homework that try to improve the excecution time of a 4 dummie
     **AA**| **A**| **Yes** | **Yes**
     **C**| **AA** and **B**| No | **Yes**
     
-    We excecute {C}
+    We excecute {**C**}
     
     Step 4:
     
@@ -87,12 +87,12 @@ This project is a homework that try to improve the excecution time of a 4 dummie
     
     Then we have this list of set of parallel tasks:
     
-    + {A,B}
-    + {AA}
-    + {C}
+    + {**A**,**B**}
+    + {**AA**}
+    + {**C**}
     
     And must be excecute in order:
-    {A,B} -> {AA} -> {C}
+    {**A**,**B**} -> {**AA**} -> {**C**}
     
   
   
