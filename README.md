@@ -111,7 +111,7 @@ This project is a homework that try to improve the execution time of 4 dummies s
   
 ## Implements Dummies Services
 
-To implements the dummies services we used restful service using Spring Boot. The 4 services was implement on the class [Service] when:
+To implements the dummies services we used restful service using Spring Boot. The 4 services was implement on the class [Service](serviceDependency/src/main/java/com/homework/services/Service.java) when:
 
 * Service A return 1
 * Service B return 3
