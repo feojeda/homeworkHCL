@@ -1,6 +1,5 @@
 package com.homework.logic;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withStatus;
@@ -23,6 +22,15 @@ import org.springframework.web.util.UriTemplateHandler;
 
 import com.homework.ServiceDependencyApplication;
 
+
+/**
+ * test case that implements a benchmark between of the single and multi threads method of the OrderLogic class.
+ * The OrderLogic is a class with 2 method, both are restful services client.
+ * to test this methods we used a mock class called MockRestServiceServer provide by Srping.
+ * Each unit test print a line with the total time of 10000 execution in miliseconds.
+ * @author francisco
+ *
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = ServiceDependencyApplication.class)
 public class OrderLogucBenchmark {
@@ -47,6 +55,12 @@ public class OrderLogucBenchmark {
 
 	private MockRestServiceServer mockServer;
 
+	/**
+	 * setting the mockServer object and define it like a unsorted request mock because we dont control when a restful
+	 * service will be called by a parallel thread. 
+	 * Setting The url rest services.
+	 * @throws Exception
+	 */
 	@Before
 	public void setup() throws Exception {
 		mockServer = MockRestServiceServer.bindTo(restTemplate).build(new UnorderedRequestExpectationManager());
@@ -58,15 +72,17 @@ public class OrderLogucBenchmark {
 		urlServiceC = uriTemplate.expand(url, "c").toString();
 	}
 
+	/**
+	 * this test execute 10000 times the processOrder method and print a line with the total time in miliseconds
+	 */
 	@Test
 	public void testProcessOrder() {
-
-		
-
-
 		int n = loadAmount;
 		long start = System.currentTimeMillis();
 		while (n-- > 0) {
+			/*
+			 * reset the mock expectation on each loop
+			 */
 			mockServer.reset();
 			mockServer.expect(requestTo(urlServiceA)).andRespond(withStatus(HttpStatus.OK).body(resultA));
 			mockServer.expect(requestTo(urlServiceAA)).andRespond(withStatus(HttpStatus.OK).body(resultAA));
@@ -77,16 +93,19 @@ public class OrderLogucBenchmark {
 		long end = System.currentTimeMillis();
 		System.out.println("DEBUG: Lineal process " + (end - start) + " MilliSeconds");		
 		assertTrue(true);
-
 	}
 
+	/**
+	 * this test execute 10000 times the processOrderParallel method and print a line with the total time in miliseconds
+	 */
 	@Test
 	public void testProcessOrderParallel() throws InterruptedException, ExecutionException {
-
-
 		int n = loadAmount;
 		long start = System.currentTimeMillis();
 		while (n-- > 0) {
+			/*
+			 * reset the mock expectation on each loop
+			 */
 			mockServer.reset();
 			mockServer.expect(requestTo(urlServiceA)).andRespond(withStatus(HttpStatus.OK).body(resultA));
 			mockServer.expect(requestTo(urlServiceB)).andRespond(withStatus(HttpStatus.OK).body(resultB));

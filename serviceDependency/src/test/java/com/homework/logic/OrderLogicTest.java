@@ -20,7 +20,14 @@ import org.springframework.web.util.DefaultUriTemplateHandler;
 import org.springframework.web.util.UriTemplateHandler;
 
 import com.homework.ServiceDependencyApplication;
-
+import com.homework.entities.Order;
+/**
+ * test case to OrderLogic class.
+ * The OrderLogic is a class with 2 method, both are restful services client.
+ * to test this methods we used a mock class called MockRestServiceServer provide by Srping.
+ * @author francisco
+ *
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = ServiceDependencyApplication.class)
 public class OrderLogicTest {
@@ -43,6 +50,14 @@ public class OrderLogicTest {
 	
 	private MockRestServiceServer mockServer;
 	
+	private Order dummyOrder;
+	
+	/**
+	 * setting:
+	 * 	 - the mockServer using the restTemplate object wired from the Spring context and the same using by OrderLogic Class.
+	 * 	 - The url rest services.
+	 * @throws Exception
+	 */
 	@Before
 	public void setup() throws Exception {
 	    mockServer = MockRestServiceServer.createServer(restTemplate);
@@ -53,11 +68,19 @@ public class OrderLogicTest {
 		urlServiceB = uriTemplate.expand(url, "b").toString();
 		urlServiceC = uriTemplate.expand(url, "c").toString();
 		
+		dummyOrder = new Order();
+		
 	}
 	
+	/**
+	 * Test of lineal process order using a mock rest server.
+	 */
 	@Test
 	public void testProcessOrder() {
 		
+		/*
+		 * define the expected rest request and their result
+		 */
 		mockServer.expect(requestTo(urlServiceA)).
 				andRespond(withStatus(HttpStatus.OK).
 						body(resultA));
@@ -73,16 +96,22 @@ public class OrderLogicTest {
 		mockServer.expect(requestTo(urlServiceC)).
 		andRespond(withStatus(HttpStatus.OK).
 				body(resultC));
-		
-		String result = orderLogic.processOrder(null);
+		/*
+		 * call the processOrder method. 
+		 */
+		String result = orderLogic.processOrder(dummyOrder);
 		assertEquals("123",result);
 		
 	}
 	
+	/**
+	 * Test of multithread process order using a mock rest server.
+	 */
 	@Test
 	public void testProcessOrderParallel() throws InterruptedException, ExecutionException {
-		
-		
+		/*
+		 * define the expected rest request and their result
+		 */		
 		mockServer.expect(requestTo(urlServiceA)).
 				andRespond(withStatus(HttpStatus.OK).
 						body(resultA));
@@ -98,7 +127,10 @@ public class OrderLogicTest {
 		andRespond(withStatus(HttpStatus.OK).
 				body(resultC));
 		
-		String result = orderLogic.processOrderParallel(null);
+		/*
+		 * call the processOrder method. 
+		 */
+		String result = orderLogic.processOrderParallel(dummyOrder);
 		assertEquals("123",result);
 		
 	}
