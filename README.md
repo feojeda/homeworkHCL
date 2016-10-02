@@ -2,9 +2,12 @@
 This project is a homework that try to improve the execution time of 4 dummies services by a multi thread approach.
 
 # Table of Contents
-1. [The Problem](#the-problem)
-2. [Lineal Solution](#lineal-solution)
-3. [Parallel Solution](#parallel-solution)
+* Theorical Model
+ 1. [The Problem](#the-problem)
+ 2. [Lineal Solution](#lineal-solution)
+ 3. [Parallel Solution](#parallel-solution)
+ * Java Implements
+  1. [Implements Dummies Services](implements-dummies-services)
 
 
 ## The Problem
@@ -106,5 +109,12 @@ This project is a homework that try to improve the execution time of 4 dummies s
     {**A**,**B**} -> {**AA**} -> {**C**}
     
   
-  
+## Implements Dummies Services
+
+To implements the dummies services we used restful service using Spring Boot. The 4 services was implement on the class [Service] when:
+
+* Service A return 1
+* Service B return 3
+* Service AA has a String parameter called **a** and return the String **a** + 2
+* Service C has two String parameters, **aa** and **b** and return the String **aa** + **b** 
   
