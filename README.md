@@ -1,5 +1,5 @@
 # homeworkHCL
-This project is a homework that try to improve the excecution time of a 4 dummies services. 
+This project is a homework that try to improve the execution time of a 4 dummies services. 
 
 ####We have 4 service:
 * **A**
@@ -8,13 +8,13 @@ This project is a homework that try to improve the excecution time of a 4 dummie
 * **C**: the inputs are the output of **AA** and **B**.
 
 
-  ####A lineal excecution must follow those order:
-  **A** -> **AA** -> **B** -> **C**
+  ####A lineal execution must follow those order:
+  **A** -> **AA** -> **B** -> **C**execute
   or
   **A** -> **B** -> **AA** -> **C**
   **B** -> **A** -> **AA** -> **C**
   
-  when a<sub>1</sub> -> a<sub>2</sub> -> a<sub>3</sub> -> ... -> a<sub>n</sub> is a lineal excecution of **n** services (tasks) in order from left to right.
+  when a<sub>1</sub> -> a<sub>2</sub> -> a<sub>3</sub> -> ... -> a<sub>n</sub> is a lineal execution of **n** services (tasks) in order from left to right.
   
   In this execite we have:
   - 2 isolated services: 
@@ -36,9 +36,9 @@ This project is a homework that try to improve the excecution time of a 4 dummie
   
   **witch ones?**
   
-  > A set of tasks could be excecute on parallel when all their dependents are done. 
+  > A set of tasks could be execute on parallel when all their dependents are done. 
    
-   Now we can divide the tasks excecution in a set steps when each step excetuce a set of parallel tasks.
+   Now we can divide the tasks execution in a set steps when each step execute a set of parallel tasks.
    On this case:
    Step 1:
    
@@ -49,7 +49,7 @@ This project is a homework that try to improve the excecution time of a 4 dummie
     **AA**| **A**| No | No
     **C**| **AA** and **B**| No | No
     
-    We excecute {**A**,**B**}
+    We execute {**A**,**B**}
     
     Step 2:
     
@@ -60,7 +60,7 @@ This project is a homework that try to improve the excecution time of a 4 dummie
     **AA**| **A**| No | **Yes**
     **C**| **AA** and **B**| No | No
     
-    We excecute {**AA**}
+    We execute {**AA**}
     
     Step 3:
     
@@ -71,7 +71,7 @@ This project is a homework that try to improve the excecution time of a 4 dummie
     **AA**| **A**| **Yes** | **Yes**
     **C**| **AA** and **B**| No | **Yes**
     
-    We excecute {**C**}
+    We execute {**C**}
     
     Step 4:
     
@@ -82,7 +82,7 @@ This project is a homework that try to improve the excecution time of a 4 dummie
     **AA**| **A**| **Yes** | **Yes**
     **C**| **AA** and **B**| **Yes** | **Yes**
     
-    We dont have more task to excecute.
+    We dont have more task to execute.
     
     
     Then we have this list of set of parallel tasks:
@@ -91,7 +91,7 @@ This project is a homework that try to improve the excecution time of a 4 dummie
     + {**AA**}
     + {**C**}
     
-    And must be excecute in order:
+    And must be execute in order:
     {**A**,**B**} -> {**AA**} -> {**C**}
     
   
