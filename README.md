@@ -3,6 +3,8 @@ This project is a homework that try to improve the execution time of 4 dummies s
 
 # Table of Contents
 1. [The Problem](#the-problem)
+2. [Lineal Solution](#lineal-solution)
+3. [Parallel Solution](#parallel-solution)
 
 
 ## The Problem
@@ -13,7 +15,7 @@ This project is a homework that try to improve the execution time of 4 dummies s
 * **B**
 * **C**: the inputs are the output of **AA** and **B**.
 
-
+## Lineal Solution
   ####A lineal execution must follow those order:
   **A** -> **AA** -> **B** -> **C**execute
   or
@@ -21,7 +23,9 @@ This project is a homework that try to improve the execution time of 4 dummies s
   **B** -> **A** -> **AA** -> **C**
   
   when a<sub>1</sub> -> a<sub>2</sub> -> a<sub>3</sub> -> ... -> a<sub>n</sub> is a lineal execution of **n** services (tasks) in order from left to right.
-  
+
+## Parallel Solution
+
   In this execite we have:
   - 2 isolated services: 
     + **A** and **B**
