@@ -1,5 +1,5 @@
 # homeworkHCL
-This project is a homework that try to improve the execution time of a 4 dummies services. 
+This project is a homework that try to improve the execution time of 4 dummies services by a multi thread approach.
 
 ####We have 4 service:
 * **A**
@@ -40,7 +40,8 @@ This project is a homework that try to improve the execution time of a 4 dummies
    
    Now we can divide the tasks execution in a set steps when each step execute a set of parallel tasks.
    On this case:
-   Step 1:
+   
+   ###Step 1:
    
    Task|Dependecies| Done | Ready to call
    ---|---|---|---
@@ -51,7 +52,7 @@ This project is a homework that try to improve the execution time of a 4 dummies
     
     We execute {**A**,**B**}
     
-    Step 2:
+    ###Step 2:
     
     Task|Dependecies| Done | Ready to call
    ---|---|---|---
@@ -62,7 +63,7 @@ This project is a homework that try to improve the execution time of a 4 dummies
     
     We execute {**AA**}
     
-    Step 3:
+    ###Step 3:
     
     Task|Dependecies| Done | Ready to call
    ---|---|---|---
@@ -73,7 +74,7 @@ This project is a homework that try to improve the execution time of a 4 dummies
     
     We execute {**C**}
     
-    Step 4:
+    ###Step 4:
     
     Task|Dependecies| Done | Ready to call
    ---|---|---|---
