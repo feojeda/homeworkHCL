@@ -6,8 +6,8 @@ This project is a homework that try to improve the execution time of 4 dummies s
  1. [The Problem](#the-problem)
  2. [Lineal Solution](#lineal-solution)
  3. [Parallel Solution](#parallel-solution)
- * Java Implements
-  1. [Implements Dummies Services](implements-dummies-services)
+* Java Implements
+ 1. [Implements Dummies Services](#implements-dummies-services)
 
 
 ## The Problem
