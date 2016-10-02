@@ -9,6 +9,7 @@ This project is a homework that try to improve the execution time of 4 dummies s
 * Java Implements
  1. [Implements Dummies Services](#implements-dummies-services)
  2. [Implements Logic Tier](#implements-logic-tier)
+ 3. [Testing](#testing)
 
 
 ## The Problem
@@ -125,9 +126,23 @@ The logic tier is the place that call the dummies services and was implement on 
 * public String processOrder(Order order): Lineal execution
 * public String processOrderParallel(Order order): Parallel execution
 
-**processOrder** call the Restful service in a lineal way and using a single thread
+**processOrder** call the Restful services in a lineal way and using a single thread.
+
 **processOrderParallel** group the call of service **A** and **B** and execute it on parallel using one thread for each of it (**Step 1**). When finish the step 1 call the **AA** service on a single thread (**Step 2**). Whe finish the step 2 call the **C** service on a single thread.  
 
+## Testing
 
+The tests was split in 2:
++ Unit test
++ Benchmark test
+
+The unit test class are:
+ + [OrderLogicTest](serviceDependency/src/test/java/com/homework/logic/OrderLogicTest.java)
+ + [ServiceTest](serviceDependency/src/test/java/com/homework/services/ServiceTest.java)
+
+The benchmark test is:
+ + [OrderLogucBenchmark](serviceDependency/src/test/java/com/homework/logic/OrderLogucBenchmark.java)
+ 
+ 
 
   
