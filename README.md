@@ -174,7 +174,7 @@ Parallel solution is a 202.8% more faster than lineal solution. In other words p
 
 ## Conclusions
 
-The multi thread (parallel) approach improve the original and lineal solution. On this particular case we can define a "static" and unique solution predefine the order and grouping of tasks to parallelized. This solution can't be extends to others scenarios with others services and others dependency. To avoid make the same analysis for earch potecial scenario we can implement a dimamic solution that create a dependecy tree when each node is a task and the parents node are the dependency task. With this data structure we can use the graph or tree algorithms to determite when a service or task can be execute.
+The multi thread (parallel) approach improve the original and lineal solution. On this particular case we can define a "static" and unique solution predefine the order and grouping of tasks to parallelized. This solution can't be extends to others scenarios with others services and others dependency. To avoid from to make the same analysis for earch potecial scenario we can implement a dimamic solution that create a dependecy tree when each node is a task and the parents node are the dependency task. With this data structure we can use the graph or tree algorithms to determite when a service or task can be execute.
 Graph's approachs:
 
 + [Topological sorting](https://en.wikipedia.org/wiki/Topological_sorting)
