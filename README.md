@@ -10,7 +10,8 @@ This project is a homework that try to improve the execution time of 4 dummies s
  1. [Implements Dummies Services](#implements-dummies-services)
  2. [Implements Logic Tier](#implements-logic-tier)
  3. [Testing](#testing)
-
+ 4. [Benchmark Result](benchmark-result)
+* [Conclusions](conclusions)
 
 ## The Problem
 
@@ -144,5 +145,37 @@ The benchmark test is:
  + [OrderLogucBenchmark](serviceDependency/src/test/java/com/homework/logic/OrderLogucBenchmark.java)
  
  
-
+**[OrderLogicTest](serviceDependency/src/test/java/com/homework/logic/OrderLogicTest.java)** class need to test a restful client and need to simulate a restfulServer, for this the solution use the mock class [MockRestServiceServer](http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/test/web/client/MockRestServiceServer.html)
   
+
+**[ServiceTest](serviceDependency/src/test/java/com/homework/services/ServiceTest.java)** class need to test like a restful server, for this the solution use the mock class [MockMvc](http://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/test/web/servlet/MockMvc.html)
+
+**[OrderLogucBenchmark](serviceDependency/src/test/java/com/homework/logic/OrderLogucBenchmark.java)** class has 2 test methods that execute 10000 times the lineal and parallel solutions, and each method prints a line with the total time in miliseconds.
+
+## Benchmark Result
+
+After run the benchmark test several times the parallel solutions always be more quick.
+
+**This is a comparative table**
+
+
+Lineal Time|Parallel Time|diff|%
+---|---|---|---
+1905|772|1133|246%
+2825|1416|1409|199%
+1819|753|1066|241%
+1745|1274|471|136%
+1676|869|807|192%
+
+**The average is 202.8%**
+
+Parallel solution is a 202.8% more faster than lineal solution. In other words parallel solutions is 2x more faster.
+
+
+## Conclusions
+
+The multi thread (parallel) approach improve the original and lineal solution. On this particular case we can define a "static" and unique solution predefine the order and grouping of tasks to parallelized. This solution can't be extends to others scenarios with others services and others dependency. To avoid make the same analysis for earch potecial scenario we can implement a dimamic solution that create a dependecy tree when each node is a task and the parents node are the dependency task. With this data structure we can use the graph or tree algorithms to determite when a service or task can be execute.
+Graph's approachs:
+
++ [Topological sorting](https://en.wikipedia.org/wiki/Topological_sorting)
++ [Dependency graph](https://en.wikipedia.org/wiki/Dependency_graph)
