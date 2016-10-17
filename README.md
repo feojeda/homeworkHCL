@@ -24,7 +24,7 @@ This project is a homework that try to improve the execution time of 4 dummies s
 * **C**: the inputs are the output of **AA** and **B**.
 
 ## Lineal Solution
-  ####A lineal execution must follow those order:
+####A lineal execution must follow those order:
   **A** -> **AA** -> **B** -> **C**execute
   or
   **A** -> **B** -> **AA** -> **C**
@@ -124,7 +124,7 @@ when {**A** -> **AA**, **B**} is: **A** -> **AA** lineal execution of A and AA, 
  Now we can divide the tasks execution in a set steps when each step execute a set of parallel tasks.
    On this case:
    
-   ###Step 1:
+###Step 1:
    
    Task|Dependecies| Done | Ready to call
    ---|---|---|---
@@ -132,7 +132,27 @@ when {**A** -> **AA**, **B**} is: **A** -> **AA** lineal execution of A and AA, 
     **B**| none| No | **Yes**
     **C**| **AA** and **B**| No | No
     
-    We execute {**A** -> **AA**, **B**}
+We execute {**A** -> **AA**, **B**}
+
+###Step 2:
+   
+   Task|Dependecies| Done | Ready to call
+   ---|---|---|---
+    **A** -> **AA**|none | **Yes** | **Yes**
+    **B**| none| **Yes** | **Yes**
+    **C**| **AA** and **B**| No | **Yes**
+    
+We execute {**C**}
+
+###Step 3:
+   
+   Task|Dependecies| Done | Ready to call
+   ---|---|---|---
+    **A** -> **AA**|none | **Yes** | **Yes**
+    **B**| none| **Yes** | **Yes**
+    **C**| **AA** and **B**| **Yes** | **Yes**
+    
+We dont have more task to execute.
     
 
     
