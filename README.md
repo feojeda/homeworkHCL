@@ -134,27 +134,7 @@ when {**A** -> **AA**, **B**} is: **A** -> **AA** lineal execution of A and AA, 
     
     We execute {**A** -> **AA**, **B**}
     
-    ###Step 2:
-    
-    Task|Dependecies| Done | Ready to call
-   ---|---|---|---
-    **A** -> **AA**|none | **Yes** | **Yes**
-    **B**| none| **Yes** | **Yes**
-    **C**| **AA** and **B**| No | **Yes**
-    
-    We execute {**C**}
 
-###Step 3:
-    
-    Task|Dependecies| Done | Ready to call
-   ---|---|---|---
-    **A** -> **AA**|none | **Yes** | **Yes**
-    **B**| none| **Yes** | **Yes**
-    **C**| **AA** and **B**| **Yes** | **Yes**
-    
-    We execute {**C**}
-
-We dont have more task to execute.
     
   
 ## Implements Dummies Services
