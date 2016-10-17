@@ -217,8 +217,9 @@ Lineal Time|Parallel Time|LP time|diff Parallel|diff LP|% Parallel|% LP
 
 
 
-**The average % the parallel solution is 151%**
-**The average % the lineal parallel solution is 188%**
+**The average % of the parallel solution is 151%**
+
+**The average % of the lineal parallel solution is 188%**
 
 Parallel solution is a 151% more faster than lineal solution. In other words parallel solutions is 1.5x more faster.
 Lineal Parallel solution is a 188% more faster than lineal solution. In other words lineal parallel solutions is 1.8x more faster.
