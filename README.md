@@ -6,6 +6,8 @@ This project is a homework that try to improve the execution time of 4 dummies s
  1. [The Problem](#the-problem)
  2. [Lineal Solution](#lineal-solution)
  3. [Parallel Solution](#parallel-solution)
+ 4. [Lineal-Parallel Solution](#lineal-parallel-solution)
+ 
 * Java Implements
  1. [Implements Dummies Services](#implements-dummies-services)
  2. [Implements Logic Tier](#implements-logic-tier)
@@ -111,6 +113,14 @@ This project is a homework that try to improve the execution time of 4 dummies s
     And must be execute in order:
     {**A**,**B**} -> {**AA**} -> {**C**}
     
+## Lineal-Parallel Solution
+
+We can mix the lineal and parallel solution by create a parallelizable set of lineal tasks.
+
+Let  {**A** -> **AA**,**B**} -> {**C**} 
+
+when {**A** -> **AA**,**B**} is: **A** -> **AA** lineal execution of A and AA, and **B** is execute in a parallel thread to **A** -> **AA** .
+
   
 ## Implements Dummies Services
 
