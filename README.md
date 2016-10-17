@@ -171,10 +171,13 @@ The logic tier is the place that call the dummies services and was implement on 
 
 * public String processOrder(Order order): Lineal execution
 * public String processOrderParallel(Order order): Parallel execution
+* public String processOrderLinealParallel(Order order): Lineal Parallel execution
 
 **processOrder** call the Restful services in a lineal way and using a single thread.
 
 **processOrderParallel** group the call of service **A** and **B** and execute it on parallel using one thread for each of it (**Step 1**). When finish the step 1 call the **AA** service on a single thread (**Step 2**). Whe finish the step 2 call the **C** service on a single thread.  
+
+**processOrderLinealParallel** group the call of services (**A**,**AA**) and **B** and execute it on parallel using one thread for each of it (**Step 1**). When finish the step 1 call the **C** service on a single thread (**Step 2**).  
 
 ## Testing
 
@@ -204,17 +207,21 @@ After run the benchmark test several times the parallel solutions always be more
 **This is a comparative table**
 
 
-Lineal Time|Parallel Time|diff|%
----|---|---|---
-1905|772|1133|246%
-2825|1416|1409|199%
-1819|753|1066|241%
-1745|1274|471|136%
-1676|869|807|192%
+Lineal Time|Parallel Time|LP time|diff Parallel|diff LP|% Parallel|% LP
+---|---|---|---|---|---|---|---
+2059|	1163|	1061|	896|	998|	177%|	194%
+2079|	1292|	1109|	787|	970|	161%|	187%
+2058|	1148|	1040|	910|	1018|	179%|	198%
+2245|	1864|	986|	381|	1259|	120%|	228%
+1548|	1306|	1147|	242|	401|	119%|	135%
 
-**The average is 202.8%**
 
-Parallel solution is a 202.8% more faster than lineal solution. In other words parallel solutions is 2x more faster.
+
+**The average % the parallel solution is 151%**
+**The average % the lineal parallel solution is 188%**
+
+Parallel solution is a 151% more faster than lineal solution. In other words parallel solutions is 1.5x more faster.
+Lineal Parallel solution is a 188% more faster than lineal solution. In other words lineal parallel solutions is 1.8x more faster.
 
 
 ## Conclusions
