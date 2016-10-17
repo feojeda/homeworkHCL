@@ -117,10 +117,45 @@ This project is a homework that try to improve the execution time of 4 dummies s
 
 We can mix the lineal and parallel solution by create a parallelizable set of lineal tasks.
 
-Let  {**A** -> **AA**,**B**} -> {**C**} 
+Let  {**A** -> **AA**, **B**} -> {**C**} 
 
-when {**A** -> **AA**,**B**} is: **A** -> **AA** lineal execution of A and AA, and **B** is execute in a parallel thread to **A** -> **AA** .
+when {**A** -> **AA**, **B**} is: **A** -> **AA** lineal execution of A and AA, and **B** is execute in a parallel thread to **A** -> **AA**.
 
+ Now we can divide the tasks execution in a set steps when each step execute a set of parallel tasks.
+   On this case:
+   
+   ###Step 1:
+   
+   Task|Dependecies| Done | Ready to call
+   ---|---|---|---
+    **A** -> **AA**|none | No | **Yes**
+    **B**| none| No | **Yes**
+    **C**| **AA** and **B**| No | No
+    
+    We execute {**A** -> **AA**, **B**}
+    
+    ###Step 2:
+    
+    Task|Dependecies| Done | Ready to call
+   ---|---|---|---
+    **A** -> **AA**|none | **Yes** | **Yes**
+    **B**| none| **Yes** | **Yes**
+    **C**| **AA** and **B**| No | **Yes**
+    
+    We execute {**C**}
+
+###Step 3:
+    
+    Task|Dependecies| Done | Ready to call
+   ---|---|---|---
+    **A** -> **AA**|none | **Yes** | **Yes**
+    **B**| none| **Yes** | **Yes**
+    **C**| **AA** and **B**| **Yes** | **Yes**
+    
+    We execute {**C**}
+
+We dont have more task to execute.
+    
   
 ## Implements Dummies Services
 
